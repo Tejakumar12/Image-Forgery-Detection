@@ -1,0 +1,116 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Similarity Checker</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #F3904F, #3B4371);
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: black; /* Updated title color */
+            text-align: center;
+            margin: 20px 0;
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+            background: linear-gradient(to right, #A8CABA, #5D4157);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            max-width: 80%;
+            margin: auto; /* Center the container horizontally and move it to the middle */
+            margin-top: 20px; /* Add top margin for spacing */
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: white;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        p {
+            margin: 15px 0;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Additional styles for the web page */
+        footer {
+            margin-top: 20px;
+            color: #ecf0f1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Forgery Detection</h1>
+</body>    
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" action="{{ url_for('files') }}">
+            <label for="upload1">Upload Image 1:</label>
+            <input type="file" name="upload1" accept="image/*" required>
+            
+            <label for="upload2">Upload Image 2:</label>
+            <input type="file" name="upload2" accept="image/*" required>
+            
+            <button type="submit">Check Similarity</button>
+            
+            {% if msg %}
+                <p>{{ msg }}</p>
+            {% endif %}
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2023 Image Forgery Checker. All rights reserved.</p>
+    </footer>
+</html>
